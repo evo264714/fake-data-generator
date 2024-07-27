@@ -1,9 +1,9 @@
-
 document.addEventListener("DOMContentLoaded", () => {
     const regionSelect = document.getElementById('region');
     const errorSlider = document.getElementById('errorSlider');
     const errorNumber = document.getElementById('errorNumber');
     const randomSeedButton = document.getElementById('randomSeed');
+    const restoreSeedButton = document.getElementById('restoreSeed');
     const exportCSVButton = document.getElementById('exportCSV');
     const dataTableBody = document.querySelector('#dataTable tbody');
     const loader = document.getElementById('loader');
@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let errors = 0;
     let page = 1;
     let fetching = false;
+    const seedHistory = [];
 
     function fetchData() {
         if (fetching) return;
@@ -72,8 +73,18 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     randomSeedButton.addEventListener('click', () => {
+        seedHistory.push(seed); // Save current seed to history
         seed = Math.floor(Math.random() * 1000000);
         updateData();
+    });
+
+    restoreSeedButton.addEventListener('click', () => {
+        if (seedHistory.length > 0) {
+            seed = seedHistory.pop(); // Restore previous seed from history
+            updateData();
+        } else {
+            alert("No previous seed to restore.");
+        }
     });
 
     exportCSVButton.addEventListener('click', () => {
