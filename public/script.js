@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   randomSeedButton.addEventListener("click", () => {
-    seedHistory.push(seed); // Save current seed to history
+    seedHistory.push(seed); 
     seed = Math.floor(Math.random() * 1000000);
     seedValueInput.value = seed;
     updateData();
@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   restoreSeedButton.addEventListener("click", () => {
     if (seedHistory.length > 0) {
-      seed = seedHistory.pop(); // Restore previous seed from history
+      seed = seedHistory.pop(); 
       seedValueInput.value = seed;
       updateData();
     } else {
@@ -131,6 +131,5 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Initialize with default data
   updateData();
 });
