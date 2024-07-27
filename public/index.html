@@ -1,48 +1,61 @@
-
- <!DOCTYPE html>
- <html lang="en">
- <head>
-     <meta charset="UTF-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Fake Data Generator</title>
-     <link rel="stylesheet" href="style.css">
- </head>
- <body>
-     <header>
-         <h1>Fake Data Generator</h1>
-     </header>
-     <div class="container">
-         <label for="region">Select Region:</label>
-         <select id="region">
-             <option value="usa">USA</option>
-             <option value="poland">Poland</option>
-             <option value="georgia">Georgia</option>
-         </select>
- 
-         <label for="errorSlider">Number of Errors per Record:</label>
-         <input type="range" id="errorSlider" min="0" max="10" step="1">
-         <input type="number" id="errorNumber" min="0" max="1000" step="1">
- 
-         <button id="randomSeed">Generate Random Seed</button>
-         <button id="restoreSeed">Restore Previous Seed</button>
-         <button id="exportCSV">Export to CSV</button>
- 
-         <table id="dataTable">
-             <thead>
-                 <tr>
-                     <th>Index</th>
-                     <th>Random Identifier</th>
-                     <th>Name</th>
-                     <th>Address</th>
-                     <th>Phone</th>
-                 </tr>
-             </thead>
-             <tbody></tbody>
-         </table>
- 
-         <div id="loader" class="loader"></div>
-     </div>
-     <script src="script.js"></script>
- </body>
- </html>
- 
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Fake Data Generator</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header>
+            <h1>Fake Data Generator</h1>
+        </header>
+        <div class="container">
+            <label for="region">Select Region:</label>
+            <select id="region">
+                <option value="usa">USA</option>
+                <option value="poland">Poland</option>
+                <option value="georgia">Georgia</option>
+            </select>
+            <label for="seedValue">Seed Value:</label>
+            <input
+                type="number"
+                id="seedValue"
+                min="0"
+                step="1"
+            >
+            <label for="errorSlider">Number of Errors per Record:</label>
+            <input
+                type="range"
+                id="errorSlider"
+                min="0"
+                max="10"
+                step="1"
+            >
+            <input
+                type="number"
+                id="errorNumber"
+                min="0"
+                max="1000"
+                step="1"
+            >
+            <button id="randomSeed">Generate Random Seed</button>
+            <button id="restoreSeed">Restore Previous Seed</button>
+            <button id="exportCSV">Export to CSV</button>
+            <table id="dataTable">
+                <thead>
+                    <tr>
+                        <th>Index</th>
+                        <th>Random Identifier</th>
+                        <th>Name</th>
+                        <th>Address</th>
+                        <th>Phone</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            <div id="loader" class="loader"></div>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>

@@ -35,11 +35,15 @@ function generateData(seed, region, errors, page) {
 }
 
 function introduceErrors(text, errors) {
-    for (let i = 0; i < errors; i++) {
+    const maxErrors = Math.min(errors, text.length); // Limit errors to text length
+    for (let i = 0; i < maxErrors; i++) {
         const errorType = faker.helpers.arrayElement(['delete', 'add', 'swap']);
         const position = faker.datatype.number({ min: 0, max: text.length - 1 });
+        
         if (errorType === 'delete') {
-            text = text.slice(0, position) + text.slice(position + 1);
+            if (text.length > 0) { // Ensure text is not empty
+                text = text.slice(0, position) + text.slice(position + 1);
+            }
         } else if (errorType === 'add') {
             const char = faker.random.alpha({ count: 1 });
             text = text.slice(0, position) + char + text.slice(position);
@@ -52,5 +56,4 @@ function introduceErrors(text, errors) {
     }
     return text;
 }
-
 module.exports = { generateData };
